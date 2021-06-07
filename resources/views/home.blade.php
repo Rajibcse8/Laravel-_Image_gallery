@@ -25,7 +25,9 @@
     <div class="row justify-content-center">
         <form action="{{ route('album.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <input type="file" name="image" class="form-control">
+            <input type="file" name="image[]" class="form-control">
+            <input type="file" name="image[]" class="form-control">
+            <input type="file" name="image[]" class="form-control">
             <button class="btn btn-primary" types="submit">Submit</button>
 
         </form>
