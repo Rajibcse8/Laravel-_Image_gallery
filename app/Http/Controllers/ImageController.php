@@ -14,13 +14,17 @@ class ImageController extends Controller
    }
 
    public function store(Request  $req){
+
+      $album=Album::create([
+         'name'=>$req->get('album'),
+      ]);
     
       if($req->hasFile('image')){
          foreach($req->file('image') as $image){
          $path=$image->store('uploads','public');   
          Image::create([
             'name'=>$path,
-            'album_id'=>1
+            'album_id'=>$album->id
          ]);
       }
       }

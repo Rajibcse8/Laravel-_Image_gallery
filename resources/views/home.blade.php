@@ -25,19 +25,19 @@
     <div class="row justify-content-center">
         <form action="{{ route('album.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            <input type="text" name="album" class="form-control" placeholder="Enter your album name">
             <input type="file" name="image[]" class="form-control">
             <input type="file" name="image[]" class="form-control">
             <input type="file" name="image[]" class="form-control">
             <button class="btn btn-primary" types="submit">Submit</button>
 
         </form>
-        @foreach ($images as $image )
-         <img srcset="{{ asset('storage/'.$image->name) }}"  class="img-thumbnail`">
-            
-        @endforeach
-        
-
+    
     </div>
+    @foreach ($images as $image )
+    <img srcset="{{ asset('storage/'.$image->name) }}"  class="img-thumbnail`">
+       
+   @endforeach
 </div>
 
 @endsection
