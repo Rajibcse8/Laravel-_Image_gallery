@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/album','ImageController@index');
 Route::post('album','ImageController@store')->name('album.store');
