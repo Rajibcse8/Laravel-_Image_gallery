@@ -28,6 +28,8 @@ class ImageController extends Controller
          ]);
       }
       }
+
+         return "<div class='alert alert-sucess'>Album created Sucessfully</div>";
    }
  
 }
