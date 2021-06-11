@@ -5,13 +5,15 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="show"></div>
+                <div id="errMsg"></div>
+
                 <div class="card">
                     <div class="card-body">
                         <form action="{{ route('album.store') }}" method="POST" enctype="multipart/form-data" id="form">
                             @csrf
                             <div class="form-group">
                                 <label for="">Name of album</label>
-                                <input type="text" name="album" class="form-control">
+                                <input type="text" name="album" class="form-control" id="album">
                             </div>
 
                             <div class="input-group control-group initial-add-more">
@@ -67,31 +69,43 @@
 
 </script>
 
-
-  <script type="text/javascript">
+<script type="text/javascript">
     $(document).ready(function() {
 
-       $("#form").on('submit', (function(e) {
+        $("#form").on('submit', (function(e) {
             e.preventDefault();
-
+        
+        //   Jquery  validation
+        //     var alb=$('#album').val();
+        //    if(alb==""){
+        //        alert("error");
+        //    }
+           
+        
             $.ajax({
-
                 url: "/album",
                 type: "POST",
                 data: new FormData(this),
                 contentType: false,
-                      cache: false,
-                ProcessData: false,
-                success: function(response) 
-                {
-                    
+                cache: false,
+                processData: false,
+
+                success: function(response) {
+
                     $('.show').html(response);
-                 
                     $("#form")[0].reset();
+                    $("#errMsg").empty()
 
                 },
-                error: function(Data) {
-                    alert('Error');
+                error: function(data) {
+                	    	//console.log(data.responseJSON)
+	    	var error = data.responseJSON;
+	    	$("#errMsg").empty()
+	    	$.each(error.errors,function(key,value){
+	    		$("#errMsg").append('<p class="text-center text-danger">'+value+'</p>');
+
+	    	});
+
                 }
 
             });
@@ -99,4 +113,4 @@
         }));
     });
 
-</script>   
+</script>

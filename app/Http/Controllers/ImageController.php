@@ -15,6 +15,11 @@ class ImageController extends Controller
 
    public function store(Request  $req){
 
+      $this->validate($req,[
+         'album'=>'required|min:3|max:30',
+         'image'=>'required'
+      ]);
+
       $album=Album::create([
          'name'=>$req->get('album'),
       ]);
@@ -29,7 +34,7 @@ class ImageController extends Controller
       }
       }
 
-         return "<div class='alert alert-sucess'>Album created Sucessfully</div>";
+         return "<div class='alert alert-success'>Album created Sucessfully</div>";
    }
  
 }
