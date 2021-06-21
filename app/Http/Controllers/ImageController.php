@@ -47,5 +47,11 @@ class ImageController extends Controller
 
          return "<div class='alert alert-success'>Album created Sucessfully</div>";
    }
+
+   public function destroy(Request $req){
+      $image=Image::findOrFail(($req->id));
+      $image->delete();
+      return  redirect('/')->with('messege','Image delete sucessfully');
+   }
  
 }
