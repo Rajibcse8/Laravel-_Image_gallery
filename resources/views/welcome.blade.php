@@ -9,10 +9,8 @@
 
                         <div class="item">
                             <img src="{{ asset('image/nature1.jpg') }}" class="img-thumbnail" alt="">
-                            <a href="albums/{{ $album->id }}" class="centered">Nature</a>
+                            <a href="albums/{{ $album->id }}" class="centered">{{ $album->name }}</a>
                         </div>
-
-
                     </div>
                 </a>
             @endforeach
