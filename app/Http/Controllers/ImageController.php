@@ -8,6 +8,12 @@ use  App\Album;
 
 class ImageController extends Controller
 {
+
+  public  function album(){
+     $albums=Album::with('images')->get();
+     return view('welcome',compact('albums'));
+  }
+
    public  function index(){
       $images=Image::get();
       return  view('home',compact('images'));
