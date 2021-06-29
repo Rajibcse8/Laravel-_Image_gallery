@@ -51,7 +51,7 @@ class ImageController extends Controller
    public function destroy(Request $req){
       $image=Image::findOrFail(($req->id));
       $image->delete();
-      return  redirect('/')->with('messege','Image delete sucessfully');
+      return  redirect()->back()->with('messege','Image delete sucessfully');
    }
  
 }
