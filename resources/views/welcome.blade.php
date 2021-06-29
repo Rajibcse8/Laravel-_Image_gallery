@@ -2,12 +2,12 @@
 @section('content')
 
     <div class="container">
-        @if(Session::has('messege'))
+        @if (Session::has('messege'))
 
-        <div class="alert alert-success">
-            {{ Session::get('messege') }}
-       </div>    
-      @endif
+            <div class="alert alert-success">
+                {{ Session::get('messege') }}
+            </div>
+        @endif
         <div class="row">
             @foreach ($albums as $album)
                 <a href="albums/{{ $album->id }}">
